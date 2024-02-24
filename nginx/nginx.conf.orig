@@ -1,9 +1,0 @@
-upstream loadbalancer {
-    server 172.17.0.1:5001 weight=5;
-}
-
-server {
-    location / {
-        proxy_pass http://loadbalancer;
-    }
-}
