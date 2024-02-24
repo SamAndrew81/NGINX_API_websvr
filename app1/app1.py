@@ -9,8 +9,12 @@ data_store = []
 @app1.route('/')
 def show_api():
     # Use the display.html template to display the "Demo SNOW placeholder - Display API test calls" message and the data
-    return render_template('display.html', message='Demo SNOW placeholder - Display API test calls:', data=data_store)
+    # Format each item in data_store to pretty-printed JSON for better readability
+    formatted_data_store = [json.dumps(item, indent=4) for item in data_store]
+    # Pass the formatted JSON strings to the template
+    return render_template('display.html', message='Demo SNOW placeholder - Display API test calls:', data=formatted_data_store)
 
+# This route might be redundant if '/' route is already formatting and showing the data
 @app1.route('/view-data')
 def view_data():
     # Format each item in data_store to pretty-printed JSON
@@ -18,7 +22,6 @@ def view_data():
     # Pass the formatted JSON strings to the template
     return render_template('display.html', message='Demo SNOW placeholder - Display API test calls:', data=formatted_data_store)
 
-# Methods for the API calls
 @app1.route('/api/data', methods=['POST'])
 def receive_data():
     data = request.json  # Assume the incoming data is JSON
@@ -27,7 +30,7 @@ def receive_data():
 
 @app1.route('/api/data', methods=['GET'])
 def show_data():
-    # Return the data_store as JSON
+    # Return the data_store as JSON, consider formatting for readability if consumed directly
     return jsonify(data_store)
 
 @app1.route('/api/data/<identifier>', methods=['DELETE'])

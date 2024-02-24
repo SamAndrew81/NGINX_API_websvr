@@ -4,10 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Placeholder SNOW demo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/themes/prism.min.css" /> <!-- Prism CSS for syntax highlighting -->
     <style>
         body { font-family: Arial, sans-serif; line-height: 1.6; }
         .data-container { margin: 20px; }
         .data-item { background: #f4f4f4; margin-bottom: 10px; padding: 10px; border-radius: 5px; }
+        .json { white-space: pre-wrap; word-wrap: break-word; } /* Additional styling for JSON data */
     </style>
 </head>
 <body>
@@ -15,10 +17,12 @@
     <div class="data-container">
         {% for item in data %}
             <div class="data-item">
-                <!-- Directly display the pre-formatted JSON string -->
-                <pre>{{ item | safe }}</pre>
+                <!-- Display the pre-formatted JSON string with syntax highlighting -->
+                <pre class="json"><code class="language-json">{{ item | safe }}</code></pre>
             </div>
         {% endfor %}
     </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/prism.min.js"></script> <!-- Prism JS for syntax highlighting -->
 </body>
 </html>
