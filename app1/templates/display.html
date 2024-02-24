@@ -6,11 +6,31 @@
     <title>Placeholder SNOW demo</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.23.0/themes/prism.min.css" /> <!-- Prism CSS for syntax highlighting -->
     <style>
-        body { font-family: Arial, sans-serif; line-height: 1.6; }
-        .data-container { margin: 20px; }
-        .data-item { background: #f4f4f4; margin-bottom: 10px; padding: 10px; border-radius: 5px; }
-        .json { white-space: pre-wrap; word-wrap: break-word; } /* Additional styling for JSON data */
-    </style>
+        body { 
+            font-family: Arial, sans-serif; 
+            line-height: 1.6; 
+            margin: 0;
+            padding: 0;
+            overflow-x: hidden; /* Prevent horizontal scrolling */
+        }
+        .data-container { 
+            margin: 20px; 
+            padding: 0 10px; /* Add padding to prevent text from touching the edge */
+        }
+        .data-item { 
+            background: #f4f4f4; 
+            margin-bottom: 10px; 
+            padding: 10px; 
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Optional: Adds subtle shadow for depth */
+            overflow-x: auto; /* Allows horizontal scrolling for overflow content */
+        }
+        .json { 
+            white-space: pre-wrap; /* Keep pre-formatting but wrap text */
+            word-wrap: break-word; /* Ensure long words do not cause overflow */
+            max-width: 100%; /* Ensure content does not exceed its container */
+        }
+    </style>  
 </head>
 <body>
     <h1>{{ message }}</h1>
